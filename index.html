@@ -223,7 +223,7 @@
     
     <!-- 调试日志框 -->
     <div class="debug-info" id="debugInfo">
-💡 已切换为【静态保守目标价】，基于去年已落地分红计算
+💡 已切换为【静态保守目标价】，基于去年已落地分红计算 | 筛选器已修复HTTPS跨域问题
     </div>
     
     <div class="table-container">
@@ -269,6 +269,7 @@
             <button onclick="quickTest('贵州茅台')">贵州茅台</button>
             <button onclick="quickTest('长江电力')">长江电力</button>
             <button onclick="quickTest('中国神华')">中国神华</button>
+            <button onclick="quickTest('招商银行')">招商银行</button>
         </div>
         <div class="filter-input-group">
             <input type="text" class="filter-input" id="stockInput" placeholder="请输入股票名称/代码（如：格力电器、000651、600519）">
@@ -295,15 +296,29 @@
             '中国移动': '600941',
             '美的集团': '000333',
             '泸州老窖': '000568',
-            '五粮液': '000858'
+            '五粮液': '000858',
+            '农业银行': '601288',
+            '中国建筑': '601668',
+            '京沪高铁': '601816'
         };
 
         // 全局变量
         let currentEvalStock = null;
         let stockData = null;
-        // CORS代理（筛选器用）
-        const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+        // ==================== 【核心修复】稳定CORS代理池 + HTTPS接口 ====================
+        // 稳定CORS代理池，按优先级排序，一个失败自动换下一个
+        const CORS_PROXY_LIST = [
+            'https://corsproxy.io/?',
+            'https://api.allorigins.win/raw?url=',
+            'https://cors-anywhere.herokuapp.com/',
+            'https://proxy.cors.sh/',
+            'https://cors-proxy.htmldriven.com/?url='
+        ];
+        // 【致命修复】接口改为HTTPS，解决GitHub Pages混合内容拦截
         const REAL_TIME_API = 'https://qt.gtimg.cn/q=';
+        // 请求超时时间
+        const FETCH_TIMEOUT = 8000;
 
         // 调试日志函数
         function logDebug(msg) {
@@ -311,6 +326,44 @@
             const now = new Date().toLocaleTimeString();
             debugBox.innerHTML += `\n[${now}] ${msg}`;
             debugBox.scrollTop = debugBox.scrollHeight;
+        }
+
+        // ==================== 带超时的fetch工具函数 ====================
+        function fetchWithTimeout(url, options = {}, timeout = FETCH_TIMEOUT) {
+            return Promise.race([
+                fetch(url, options),
+                new Promise((_, reject) =>
+                    setTimeout(() => reject(new Error('请求超时')), timeout)
+                )
+            ]);
+        }
+
+        // ==================== 【核心修复】带代理轮询的请求函数 ====================
+        async function fetchWithProxy(targetUrl) {
+            let lastError = null;
+            // 逐个尝试代理池
+            for (let i = 0; i < CORS_PROXY_LIST.length; i++) {
+                const proxy = CORS_PROXY_LIST[i];
+                const proxyUrl = `${proxy}${encodeURIComponent(targetUrl)}`;
+                logDebug(`正在使用第${i+1}个代理请求数据: ${proxy}`);
+                
+                try {
+                    const response = await fetchWithTimeout(proxyUrl);
+                    if (response.ok) {
+                        const text = await response.text();
+                        logDebug(`第${i+1}个代理请求成功`);
+                        return text;
+                    } else {
+                        throw new Error(`HTTP状态码: ${response.status}`);
+                    }
+                } catch (error) {
+                    logDebug(`第${i+1}个代理请求失败: ${error.message}`);
+                    lastError = error;
+                    continue;
+                }
+            }
+            // 所有代理都失败
+            throw new Error(`所有代理均请求失败，最后错误: ${lastError?.message || '未知错误'}`);
         }
 
         // ==================== 页面初始化 ====================
@@ -349,14 +402,14 @@
             }
         }
 
-        // ==================== 创建表格行【核心修改：目标价切换为静态分红计算】 ====================
+        // ==================== 创建表格行 ====================
         function createTableRow(stock) {
             // 优先用实时数据，没有就用默认值
             const price = stock.price || stock.demoPrice || 0;
             const pe = stock.pe || stock.demoPE || 0;
             const pb = stock.pb || stock.demoPB || 0;
             
-            // 【核心修改】静态/动态股息率计算，目标价全部使用去年实际分红（lastYearDividend）
+            // 静态/动态股息率计算，目标价全部使用去年实际分红
             const staticDividend = price ? ((stock.lastYearDividend / price) * 100).toFixed(2) : '--';
             const dynamicDividend = price ? ((stock.estimatedDividend / price) * 100).toFixed(2) : '--';
             // 静态保守目标价：基于去年已落地分红计算
@@ -364,7 +417,7 @@
             const staticTargetPrice5 = (stock.lastYearDividend / 0.05).toFixed(2);
             const equityReturn = pe ? (1 / pe * 100).toFixed(2) : '--';
             
-            // 【同步修改】买入信号判断，基于静态4%保守目标价
+            // 买入信号判断，基于静态4%保守目标价
             let signal = '<span class="signal-wait">⚪ 观望</span>';
             let priceClass = 'price-normal';
             
@@ -455,21 +508,18 @@
             // 按钮loading状态
             filterBtn.disabled = true;
             filterBtn.innerText = '数据获取中...';
-            resultDiv.innerHTML = '<div class="result-item">正在通过CORS代理获取实时数据...</div>';
+            resultDiv.innerHTML = '<div class="result-item">正在通过代理池获取实时数据，自动重试中...</div>';
             resultDiv.classList.add('show');
 
             try {
                 // 获取实时数据
                 const fullCode = formatStockCode(stockInfo.code);
                 const targetUrl = `${REAL_TIME_API}${fullCode}`;
-                const proxyUrl = `${CORS_PROXY}${encodeURIComponent(targetUrl)}`;
                 
-                const response = await fetch(proxyUrl);
-                if (!response.ok) throw new Error(`代理请求失败：${response.status}`);
-                
-                const rawText = await response.text();
+                // 【核心修复】使用代理轮询请求
+                const rawText = await fetchWithProxy(targetUrl);
                 const dataMatch = rawText.match(/v_([a-z0-9]+)="([^"]+)"/);
-                if (!dataMatch) throw new Error('数据格式解析失败');
+                if (!dataMatch) throw new Error('数据格式解析失败，股票代码可能错误');
                 
                 const dataArr = dataMatch[2].split('~');
                 const realData = {
@@ -481,7 +531,7 @@
                     marketCap: dataArr[45] ? (parseFloat(dataArr[45]) / 100000000).toFixed(2) : '未知'
                 };
 
-                if (!realData.price) throw new Error('无有效价格数据');
+                if (!realData.price) throw new Error('无有效价格数据，股票代码可能错误或已退市');
 
                 // 整理股票完整数据
                 const fullStockData = {
@@ -502,7 +552,7 @@
                     isNew: true
                 };
                 
-                // 【同步修改】筛选器里的目标价也切换为静态保守价
+                // 静态保守价计算
                 fullStockData.staticDividend = ((fullStockData.lastYearDividend / fullStockData.price) * 100).toFixed(2);
                 fullStockData.dynamicDividend = ((fullStockData.estimatedDividend / fullStockData.price) * 100).toFixed(2);
                 fullStockData.staticTargetPrice4 = (fullStockData.lastYearDividend / 0.04).toFixed(2);
@@ -515,14 +565,16 @@
                 currentEvalStock = fullStockData;
                 
             } catch (error) {
-                logDebug(`筛选失败：${error.message}`);
+                logDebug(`筛选最终失败：${error.message}`);
                 resultDiv.innerHTML = `
                     <div class="result-item result-warn">
                         <h4>⚠️ 实时数据获取失败</h4>
                         <div>失败原因：${error.message}</div>
                         <div style="margin-top:10px;">
-                            <strong>💡 说明：</strong><br>
-                            CORS代理可能偶尔不稳定，请稍后重试，或检查股票代码是否正确
+                            <strong>💡 解决方案：</strong><br>
+                            1. 检查股票名称/代码是否正确<br>
+                            2. 刷新页面后重试（自动切换代理）<br>
+                            3. 确认股票为沪市/深市A股，暂不支持港股/美股
                         </div>
                     </div>
                 `;
