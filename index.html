@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>奥巴马组合 - GitHub Pages稳定版</title>
+    <title>奥巴马组合 - 静态保守价版</title>
     <style>
         * {
             margin: 0;
@@ -215,7 +215,7 @@
     </style>
 </head>
 <body>
-    <h1>奥巴马组合</h1>
+    <h1>奥巴马组合（静态保守价版）</h1>
     <div class="header-info">
         <div class="progress" id="progress">准备加载...</div>
         <div class="update-time" id="updateTime">数据更新时间：等待加载...</div>
@@ -223,7 +223,7 @@
     
     <!-- 调试日志框 -->
     <div class="debug-info" id="debugInfo">
-💡 GitHub Pages稳定版，加载本地自动更新的股票数据
+💡 已切换为【静态保守目标价】，基于去年已落地分红计算
     </div>
     
     <div class="table-container">
@@ -241,8 +241,8 @@
                     <th>最新PB</th>
                     <th>股东权益回报率</th>
                     <th>仓位控制规则</th>
-                    <th>股息率4%目标价</th>
-                    <th>股息率5%目标价</th>
+                    <th>静态4%股息率目标价</th>
+                    <th>静态5%股息率目标价</th>
                     <th>可买入信号</th>
                 </tr>
             </thead>
@@ -257,7 +257,7 @@
         <strong>核心投资评价标准：</strong><br>
         1. 长期平均ROE ≥ 15%；2. 企业分红率不低于50%；3. 股东权益回报率 = ROE / PB = 1/PE；<br>
         4. 未来3年行业不下滑；5. 央企/国企控股；6. PE<20；7. 动态股息率>4%；8. 长期回报率 = ROE×(1/PB)+股息率<br>
-        <strong>数据说明：</strong>数据由GitHub Actions自动定时更新，无任何跨域限制，支持沪市、深市全市场股票。
+        <strong>价格说明：</strong>4%/5%股息率目标价已切换为【静态保守价】，基于上一会计年度已落地的实际分红计算，安全垫更高。
     </div>
 
     <!-- 全市场股票筛选器 -->
@@ -349,25 +349,26 @@
             }
         }
 
-        // ==================== 创建表格行 ====================
+        // ==================== 创建表格行【核心修改：目标价切换为静态分红计算】 ====================
         function createTableRow(stock) {
             // 优先用实时数据，没有就用默认值
             const price = stock.price || stock.demoPrice || 0;
             const pe = stock.pe || stock.demoPE || 0;
             const pb = stock.pb || stock.demoPB || 0;
             
-            // 计算核心指标
+            // 【核心修改】静态/动态股息率计算，目标价全部使用去年实际分红（lastYearDividend）
             const staticDividend = price ? ((stock.lastYearDividend / price) * 100).toFixed(2) : '--';
             const dynamicDividend = price ? ((stock.estimatedDividend / price) * 100).toFixed(2) : '--';
-            const targetPrice4 = (stock.estimatedDividend / 0.04).toFixed(2);
-            const targetPrice5 = (stock.estimatedDividend / 0.05).toFixed(2);
+            // 静态保守目标价：基于去年已落地分红计算
+            const staticTargetPrice4 = (stock.lastYearDividend / 0.04).toFixed(2);
+            const staticTargetPrice5 = (stock.lastYearDividend / 0.05).toFixed(2);
             const equityReturn = pe ? (1 / pe * 100).toFixed(2) : '--';
             
-            // 信号判断
+            // 【同步修改】买入信号判断，基于静态4%保守目标价
             let signal = '<span class="signal-wait">⚪ 观望</span>';
             let priceClass = 'price-normal';
             
-            if (price && targetPrice4 && price <= targetPrice4) {
+            if (price && staticTargetPrice4 && price <= staticTargetPrice4) {
                 signal = '<span class="signal-buy">✅ 买入信号</span>';
                 priceClass = 'price-buy';
             }
@@ -376,7 +377,7 @@
             const roeClass = stock.longTermROE >=15 ? 'text-pass' : 'text-fail';
             const payoutClass = stock.dividendPayoutRatio >=50 ? 'text-pass' : 'text-fail';
             const peClass = pe && pe <20 ? 'text-pass' : 'text-fail';
-            const dividendClass = parseFloat(dynamicDividend) >=4 ? 'text-pass' : '';
+            const dividendClass = parseFloat(staticDividend) >=4 ? 'text-pass' : '';
             
             const row = document.createElement('tr');
             row.className = stock.category;
@@ -385,15 +386,15 @@
                 <td>${stock.name}${stock.error ? '<br><span style="font-size:10px;color:#999;">(数据异常)</span>' : ''}</td>
                 <td class="${priceClass}">¥${price ? price.toFixed(2) : '--'}</td>
                 <td class="${parseFloat(staticDividend)>=4 ? 'text-pass' : ''}">${staticDividend}%</td>
-                <td class="${dividendClass}">${dynamicDividend}%</td>
+                <td>${dynamicDividend}%</td>
                 <td class="${roeClass}">${stock.longTermROE}%</td>
                 <td class="${payoutClass}">${stock.dividendPayoutRatio}%</td>
                 <td class="${peClass}">${pe ? pe.toFixed(2) : '--'}</td>
                 <td>${pb ? pb.toFixed(2) : '--'}</td>
                 <td>${equityReturn}%</td>
                 <td style="font-size:11px;max-width:120px;">${stock.positionRule}</td>
-                <td>¥${targetPrice4}</td>
-                <td>¥${targetPrice5}</td>
+                <td>¥${staticTargetPrice4}</td>
+                <td>¥${staticTargetPrice5}</td>
                 <td>${signal}</td>
             `;
             return row;
@@ -501,10 +502,11 @@
                     isNew: true
                 };
                 
-                // 计算核心指标
+                // 【同步修改】筛选器里的目标价也切换为静态保守价
+                fullStockData.staticDividend = ((fullStockData.lastYearDividend / fullStockData.price) * 100).toFixed(2);
                 fullStockData.dynamicDividend = ((fullStockData.estimatedDividend / fullStockData.price) * 100).toFixed(2);
-                fullStockData.targetPrice4 = (fullStockData.estimatedDividend / 0.04).toFixed(2);
-                fullStockData.targetPrice5 = (fullStockData.estimatedDividend / 0.05).toFixed(2);
+                fullStockData.staticTargetPrice4 = (fullStockData.lastYearDividend / 0.04).toFixed(2);
+                fullStockData.staticTargetPrice5 = (fullStockData.lastYearDividend / 0.05).toFixed(2);
                 fullStockData.equityReturn = fullStockData.pe ? (1 / fullStockData.pe * 100).toFixed(2) : '--';
                 
                 // 生成评估报告
@@ -539,7 +541,8 @@
                     <h4>📊 ${stock.name} (${stock.code}) 合规性评估报告</h4>
                     <div>最新收盘价：¥${stock.price.toFixed(2)} | PE(TTM)：${stock.pe.toFixed(2)} | PB：${stock.pb.toFixed(2)}</div>
                     <div>总市值：${stock.marketCap}亿 | 股东权益回报率：${stock.equityReturn}%</div>
-                    <div>4%股息率目标价：¥${stock.targetPrice4} | 5%股息率目标价：¥${stock.targetPrice5}</div>
+                    <div>静态4%股息率目标价：¥${stock.staticTargetPrice4} | 静态5%股息率目标价：¥${stock.staticTargetPrice5}</div>
+                    <div>当前静态股息率：${stock.staticDividend}% | 当前动态股息率：${stock.dynamicDividend}%</div>
                 </div>
             `;
             
@@ -575,17 +578,17 @@
                 html += '<div class="standard-item">❌ <strong>标准6 未达标</strong>：PE(TTM) '+stock.pe.toFixed(2)+' ≥ 20 或为负</div>';
             }
             
-            // 标准7：动态股息率>4%
-            if (parseFloat(stock.dynamicDividend) > 4) {
-                html += '<div class="standard-item">✅ <strong>标准7 达标</strong>：动态股息率 '+stock.dynamicDividend+'% > 4%</div>';
+            // 标准7：静态股息率≥4%
+            if (parseFloat(stock.staticDividend) >= 4) {
+                html += '<div class="standard-item">✅ <strong>标准7 达标</strong>：静态股息率 '+stock.staticDividend+'% ≥ 4%</div>';
                 passCount++;
             } else {
-                html += '<div class="standard-item">❌ <strong>标准7 未达标</strong>：动态股息率 '+stock.dynamicDividend+'% ≤ 4%</div>';
+                html += '<div class="standard-item">❌ <strong>标准7 未达标</strong>：静态股息率 '+stock.staticDividend+'% < 4%</div>';
             }
             
             // 标准8：长期回报率
-            const longTermReturn = ((stock.longTermROE * (1/(stock.pb || 1))) + parseFloat(stock.dynamicDividend)).toFixed(2);
-            html += `<div class="standard-item">📌 <strong>标准8 长期预期回报率</strong>：${longTermReturn}% = ROE×(1/PB)+股息率</div>`;
+            const longTermReturn = ((stock.longTermROE * (1/(stock.pb || 1))) + parseFloat(stock.staticDividend)).toFixed(2);
+            html += `<div class="standard-item">📌 <strong>标准8 长期预期回报率</strong>：${longTermReturn}% = ROE×(1/PB)+静态股息率</div>`;
             
             html += '</div>';
             
