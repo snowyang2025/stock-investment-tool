@@ -1,11 +1,12 @@
 {
-  "updateTime": "2026/3/27 17:40:18",
+  "updateTime": "2026/3/27 17:41:08",
   "stockList": [
     {
       "category": "核1",
       "name": "长江电力",
       "code": "600900",
       "lastYearDividend": 0.815,
+      "ttmDividend": 0.815,
       "estimatedDividend": 0.855,
       "longTermROE": 12.5,
       "dividendPayoutRatio": 70,
@@ -17,13 +18,15 @@
       "pe": 19.51,
       "pb": 3.01,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:12"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:40:57"
     },
     {
       "category": "核1",
       "name": "中国神华",
       "code": "601088",
       "lastYearDividend": 2.48,
+      "ttmDividend": 2.48,
       "estimatedDividend": 2.56,
       "longTermROE": 14.8,
       "dividendPayoutRatio": 60,
@@ -35,13 +38,15 @@
       "pe": 18.56,
       "pb": 2.31,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:13"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:40:59"
     },
     {
       "category": "核1",
       "name": "大秦铁路",
       "code": "601006",
       "lastYearDividend": 0.47,
+      "ttmDividend": 0.47,
       "estimatedDividend": 0.48,
       "longTermROE": 10.2,
       "dividendPayoutRatio": 65,
@@ -53,13 +58,15 @@
       "pe": 16.06,
       "pb": 0.65,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:13"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:00"
     },
     {
       "category": "备1",
       "name": "福耀玻璃",
       "code": "600660",
       "lastYearDividend": 1.9,
+      "ttmDividend": 1.9,
       "estimatedDividend": 2.1,
       "longTermROE": 18.5,
       "dividendPayoutRatio": 55,
@@ -71,13 +78,15 @@
       "pe": 16.17,
       "pb": 4.01,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:14"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:00"
     },
     {
       "category": "备1",
       "name": "伊利股份",
       "code": "600887",
       "lastYearDividend": 0.96,
+      "ttmDividend": 0.96,
       "estimatedDividend": 1.06,
       "longTermROE": 22.3,
       "dividendPayoutRatio": 52,
@@ -89,14 +98,16 @@
       "pe": 20.66,
       "pb": 3.11,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:14"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:01"
     },
     {
       "category": "备1",
       "name": "格力电器",
       "code": "000651",
       "lastYearDividend": 2,
-      "estimatedDividend": 2.2,
+      "ttmDividend": 3,
+      "estimatedDividend": 3.2,
       "longTermROE": 22,
       "dividendPayoutRatio": 60,
       "isStateOwned": false,
@@ -107,13 +118,15 @@
       "pe": 6.7,
       "pb": 1.53,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:15"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:02"
     },
     {
       "category": "备1",
       "name": "农业银行",
       "code": "601288",
       "lastYearDividend": 0.2222,
+      "ttmDividend": 0.2222,
       "estimatedDividend": 0.23,
       "longTermROE": 10.5,
       "dividendPayoutRatio": 30,
@@ -125,13 +138,15 @@
       "pe": 7.86,
       "pb": 0.84,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:15"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:03"
     },
     {
       "category": "备1",
       "name": "中国建筑",
       "code": "601668",
       "lastYearDividend": 0.255,
+      "ttmDividend": 0.255,
       "estimatedDividend": 0.26,
       "longTermROE": 12,
       "dividendPayoutRatio": 20,
@@ -143,13 +158,15 @@
       "pe": 4.56,
       "pb": 0.42,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:16"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:04"
     },
     {
       "category": "备1",
       "name": "中国铁建",
       "code": "601186",
       "lastYearDividend": 0.23,
+      "ttmDividend": 0.23,
       "estimatedDividend": 0.24,
       "longTermROE": 10,
       "dividendPayoutRatio": 15,
@@ -161,13 +178,15 @@
       "pe": 4.45,
       "pb": 0.35,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:16"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:05"
     },
     {
       "category": "备1",
       "name": "中国电建",
       "code": "601669",
       "lastYearDividend": 0.11,
+      "ttmDividend": 0.11,
       "estimatedDividend": 0.12,
       "longTermROE": 8.5,
       "dividendPayoutRatio": 20,
@@ -179,13 +198,15 @@
       "pe": 9.54,
       "pb": 0.71,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:17"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:06"
     },
     {
       "category": "备1",
       "name": "京沪高铁",
       "code": "601816",
       "lastYearDividend": 0.15,
+      "ttmDividend": 0.15,
       "estimatedDividend": 0.18,
       "longTermROE": 7,
       "dividendPayoutRatio": 50,
@@ -197,13 +218,15 @@
       "pe": 18.93,
       "pb": 1.21,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:17"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:07"
     },
     {
       "category": "备2",
       "name": "五粮液",
       "code": "000858",
       "lastYearDividend": 2.78,
+      "ttmDividend": 2.78,
       "estimatedDividend": 2.9,
       "longTermROE": 20,
       "dividendPayoutRatio": 50,
@@ -215,7 +238,8 @@
       "pe": 14.01,
       "pb": 3.01,
       "marketCap": "0.00",
-      "updateTime": "2026/3/27 17:40:18"
+      "ma120": null,
+      "updateTime": "2026/3/27 17:41:08"
     }
   ]
 }
