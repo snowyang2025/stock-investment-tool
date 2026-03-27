@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>奥巴马组合 - 静态保守价版</title>
+    <title>奥巴马组合 - 双口径+MA120版</title>
     <style>
         * {
             margin: 0;
@@ -28,7 +28,7 @@
             font-size: 20px;
         }
         .header-info {
-            max-width: 1700px;
+            max-width: 1900px;
             margin: 0 auto 10px;
             display: flex;
             justify-content: space-between;
@@ -46,7 +46,7 @@
             font-size: 13px;
         }
         .debug-info {
-            max-width: 1700px;
+            max-width: 1900px;
             margin: 10px auto;
             padding: 10px;
             background: #e3f2fd;
@@ -59,7 +59,7 @@
         }
         .table-container { 
             overflow-x: auto; 
-            max-width: 1700px; 
+            max-width: 1900px; 
             margin: 0 auto; 
             border-radius: 8px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.1);
@@ -70,10 +70,10 @@
             background: white; 
         }
         th, td { 
-            padding: 12px 8px; 
+            padding: 10px 6px; 
             text-align: center; 
             border: 1px solid #e0e0e0; 
-            font-size: 14px; 
+            font-size: 13px; 
         }
         th { 
             background-color: #2c3e50; 
@@ -110,7 +110,7 @@
             font-size: 13px; 
             color: #555; 
             line-height: 1.8;
-            max-width: 1700px;
+            max-width: 1900px;
             margin: 20px auto 0;
             max-height: 100px;
             overflow-y: auto;
@@ -118,7 +118,7 @@
         
         /* 股票筛选器样式 */
         .filter-container {
-            max-width: 1700px;
+            max-width: 1900px;
             margin: 0 auto;
             background: white;
             padding: 20px;
@@ -215,7 +215,7 @@
     </style>
 </head>
 <body>
-    <h1>奥巴马组合（静态保守价版）</h1>
+    <h1>奥巴马组合（双口径+MA120买卖信号版）</h1>
     <div class="header-info">
         <div class="progress" id="progress">准备加载...</div>
         <div class="update-time" id="updateTime">数据更新时间：等待加载...</div>
@@ -223,31 +223,35 @@
     
     <!-- 调试日志框 -->
     <div class="debug-info" id="debugInfo">
-💡 已切换为【静态保守目标价】，基于去年已落地分红计算 | 筛选器已修复HTTPS跨域问题
+💡 双口径说明：静态股息率=上年度分红 | 动态股息率=TTM滚动分红（同花顺口径）| MA120自动计算
     </div>
     
     <div class="table-container">
         <table id="stockTable">
             <thead>
                 <tr>
-                    <th>分类</th>
-                    <th>股票名称</th>
-                    <th>最新收盘价</th>
-                    <th>静态股息率</th>
-                    <th>动态股息率</th>
-                    <th>长期平均ROE</th>
-                    <th>分红率</th>
-                    <th>PE(TTM)</th>
-                    <th>最新PB</th>
-                    <th>股东权益回报率</th>
-                    <th>仓位控制规则</th>
-                    <th>静态4%股息率目标价</th>
-                    <th>静态5%股息率目标价</th>
-                    <th>可买入信号</th>
+                    <th style="min-width:60px;">分类</th>
+                    <th style="min-width:80px;">股票名称</th>
+                    <th style="min-width:80px;">最新收盘价</th>
+                    <th style="min-width:70px;">静态股息率<br><span style="font-size:10px;font-weight:normal;">(上年度)</span></th>
+                    <th style="min-width:70px;">动态股息率<br><span style="font-size:10px;font-weight:normal;">(TTM/同花顺)</span></th>
+                    <th style="min-width:70px;">长期ROE</th>
+                    <th style="min-width:70px;">分红率</th>
+                    <th style="min-width:70px;">PE(TTM)</th>
+                    <th style="min-width:70px;">最新PB</th>
+                    <th style="min-width:80px;">股东权益回报率</th>
+                    <th style="min-width:100px;">仓位控制规则</th>
+                    <th style="min-width:90px;">静态4%目标价</th>
+                    <th style="min-width:90px;">静态5%目标价</th>
+                    <th style="min-width:90px;">MA120均线</th>
+                    <th style="min-width:100px;">MA120×88%<br><span style="font-size:10px;font-weight:normal;">(买入价)</span></th>
+                    <th style="min-width:100px;">MA120×112%<br><span style="font-size:10px;font-weight:normal;">(卖出价)</span></th>
+                    <th style="min-width:80px;">股息率信号</th>
+                    <th style="min-width:80px;">MA120信号</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
-                <tr><td colspan="14" class="loading">正在加载股票数据...</td></tr>
+                <tr><td colspan="18" class="loading">正在加载股票数据（含MA120计算）...</td></tr>
             </tbody>
         </table>
     </div>
@@ -257,7 +261,7 @@
         <strong>核心投资评价标准：</strong><br>
         1. 长期平均ROE ≥ 15%；2. 企业分红率不低于50%；3. 股东权益回报率 = ROE / PB = 1/PE；<br>
         4. 未来3年行业不下滑；5. 央企/国企控股；6. PE<20；7. 动态股息率>4%；8. 长期回报率 = ROE×(1/PB)+股息率<br>
-        <strong>价格说明：</strong>4%/5%股息率目标价已切换为【静态保守价】，基于上一会计年度已落地的实际分红计算，安全垫更高。
+        <strong>MA120买卖规则：</strong>最新价 ≤ MA120×88% 触发买入信号；最新价 ≥ MA120×112% 触发卖出信号。
     </div>
 
     <!-- 全市场股票筛选器 -->
@@ -306,8 +310,7 @@
         let currentEvalStock = null;
         let stockData = null;
 
-        // ==================== 【核心修复】稳定CORS代理池 + HTTPS接口 ====================
-        // 稳定CORS代理池，按优先级排序，一个失败自动换下一个
+        // 稳定CORS代理池
         const CORS_PROXY_LIST = [
             'https://corsproxy.io/?',
             'https://api.allorigins.win/raw?url=',
@@ -315,9 +318,7 @@
             'https://proxy.cors.sh/',
             'https://cors-proxy.htmldriven.com/?url='
         ];
-        // 【致命修复】接口改为HTTPS，解决GitHub Pages混合内容拦截
         const REAL_TIME_API = 'https://qt.gtimg.cn/q=';
-        // 请求超时时间
         const FETCH_TIMEOUT = 8000;
 
         // 调试日志函数
@@ -328,7 +329,7 @@
             debugBox.scrollTop = debugBox.scrollHeight;
         }
 
-        // ==================== 带超时的fetch工具函数 ====================
+        // 带超时的fetch工具函数
         function fetchWithTimeout(url, options = {}, timeout = FETCH_TIMEOUT) {
             return Promise.race([
                 fetch(url, options),
@@ -338,10 +339,9 @@
             ]);
         }
 
-        // ==================== 【核心修复】带代理轮询的请求函数 ====================
+        // 带代理轮询的请求函数
         async function fetchWithProxy(targetUrl) {
             let lastError = null;
-            // 逐个尝试代理池
             for (let i = 0; i < CORS_PROXY_LIST.length; i++) {
                 const proxy = CORS_PROXY_LIST[i];
                 const proxyUrl = `${proxy}${encodeURIComponent(targetUrl)}`;
@@ -362,24 +362,22 @@
                     continue;
                 }
             }
-            // 所有代理都失败
             throw new Error(`所有代理均请求失败，最后错误: ${lastError?.message || '未知错误'}`);
         }
 
-        // ==================== 页面初始化 ====================
+        // 页面初始化
         window.onload = async function() {
-            logDebug('页面初始化完成，开始加载本地股票数据');
+            logDebug('页面初始化完成，开始加载本地股票数据（含MA120）');
             await loadStockData();
         };
 
-        // ==================== 加载本地JSON股票数据 ====================
+        // 加载本地JSON股票数据
         async function loadStockData() {
             const tableBody = document.getElementById('tableBody');
             const progress = document.getElementById('progress');
             const updateTimeDom = document.getElementById('updateTime');
 
             try {
-                // 读取仓库内的JSON数据
                 const response = await fetch('./data/stock-data.json');
                 if (!response.ok) throw new Error('数据文件加载失败');
                 stockData = await response.json();
@@ -387,7 +385,6 @@
                 logDebug(`数据加载成功，更新时间：${stockData.updateTime}，共${stockData.stockList.length}只股票`);
                 updateTimeDom.innerText = `数据更新时间：${stockData.updateTime}`;
 
-                // 渲染表格
                 tableBody.innerHTML = '';
                 stockData.stockList.forEach(stock => {
                     const row = createTableRow(stock);
@@ -398,31 +395,46 @@
 
             } catch (error) {
                 logDebug(`数据加载失败：${error.message}`);
-                tableBody.innerHTML = `<tr><td colspan="14" class="loading" style="color:red;">数据加载失败，请检查Actions是否正常运行</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="18" class="loading" style="color:red;">数据加载失败，请检查Actions是否正常运行</td></tr>`;
             }
         }
 
-        // ==================== 创建表格行 ====================
+        // ==================== 【核心修改】双口径+MA120买卖信号 ====================
         function createTableRow(stock) {
-            // 优先用实时数据，没有就用默认值
             const price = stock.price || stock.demoPrice || 0;
             const pe = stock.pe || stock.demoPE || 0;
             const pb = stock.pb || stock.demoPB || 0;
+            const ma120 = stock.ma120;
             
-            // 静态/动态股息率计算，目标价全部使用去年实际分红
+            // 双口径股息率
             const staticDividend = price ? ((stock.lastYearDividend / price) * 100).toFixed(2) : '--';
-            const dynamicDividend = price ? ((stock.estimatedDividend / price) * 100).toFixed(2) : '--';
-            // 静态保守目标价：基于去年已落地分红计算
+            const ttmDividend = price && stock.ttmDividend ? ((stock.ttmDividend / price) * 100).toFixed(2) : '--';
+            
+            // 静态保守目标价
             const staticTargetPrice4 = (stock.lastYearDividend / 0.04).toFixed(2);
             const staticTargetPrice5 = (stock.lastYearDividend / 0.05).toFixed(2);
             const equityReturn = pe ? (1 / pe * 100).toFixed(2) : '--';
             
-            // 买入信号判断，基于静态4%保守目标价
-            let signal = '<span class="signal-wait">⚪ 观望</span>';
+            // 【新增】MA120买卖价计算
+            const ma120BuyPrice = ma120 ? (ma120 * 0.88).toFixed(2) : '--';
+            const ma120SellPrice = ma120 ? (ma120 * 1.12).toFixed(2) : '--';
+            
+            // 【新增】MA120信号判断
+            let ma120Signal = '<span class="signal-wait">-</span>';
+            if (ma120 && price) {
+                if (price <= ma120 * 0.88) {
+                    ma120Signal = '<span class="signal-buy">📈 买入</span>';
+                } else if (price >= ma120 * 1.12) {
+                    ma120Signal = '<span class="signal-sell">📉 卖出</span>';
+                }
+            }
+            
+            // 股息率信号判断（基于静态4%目标价）
+            let divSignal = '<span class="signal-wait">⚪ 观望</span>';
             let priceClass = 'price-normal';
             
             if (price && staticTargetPrice4 && price <= staticTargetPrice4) {
-                signal = '<span class="signal-buy">✅ 买入信号</span>';
+                divSignal = '<span class="signal-buy">✅ 买入</span>';
                 priceClass = 'price-buy';
             }
             
@@ -430,7 +442,8 @@
             const roeClass = stock.longTermROE >=15 ? 'text-pass' : 'text-fail';
             const payoutClass = stock.dividendPayoutRatio >=50 ? 'text-pass' : 'text-fail';
             const peClass = pe && pe <20 ? 'text-pass' : 'text-fail';
-            const dividendClass = parseFloat(staticDividend) >=4 ? 'text-pass' : '';
+            const staticDivClass = parseFloat(staticDividend) >=4 ? 'text-pass' : '';
+            const ttmDivClass = parseFloat(ttmDividend) >=4 ? 'text-pass' : '';
             
             const row = document.createElement('tr');
             row.className = stock.category;
@@ -438,8 +451,8 @@
                 <td>${stock.category}</td>
                 <td>${stock.name}${stock.error ? '<br><span style="font-size:10px;color:#999;">(数据异常)</span>' : ''}</td>
                 <td class="${priceClass}">¥${price ? price.toFixed(2) : '--'}</td>
-                <td class="${parseFloat(staticDividend)>=4 ? 'text-pass' : ''}">${staticDividend}%</td>
-                <td>${dynamicDividend}%</td>
+                <td class="${staticDivClass}">${staticDividend}%</td>
+                <td class="${ttmDivClass}">${ttmDividend}%</td>
                 <td class="${roeClass}">${stock.longTermROE}%</td>
                 <td class="${payoutClass}">${stock.dividendPayoutRatio}%</td>
                 <td class="${peClass}">${pe ? pe.toFixed(2) : '--'}</td>
@@ -448,18 +461,21 @@
                 <td style="font-size:11px;max-width:120px;">${stock.positionRule}</td>
                 <td>¥${staticTargetPrice4}</td>
                 <td>¥${staticTargetPrice5}</td>
-                <td>${signal}</td>
+                <td>${ma120 ? '¥'+ma120.toFixed(2) : '--'}</td>
+                <td>${ma120BuyPrice}</td>
+                <td>${ma120SellPrice}</td>
+                <td>${divSignal}</td>
+                <td>${ma120Signal}</td>
             `;
             return row;
         }
 
-        // ==================== 筛选器功能 ====================
+        // 筛选器功能
         function quickTest(name) {
             document.getElementById('stockInput').value = name;
             filterStock();
         }
 
-        // 智能解析股票代码
         function parseStockInput(input) {
             input = input.trim();
             if (stockNameMap[input]) {
@@ -472,7 +488,6 @@
             return null;
         }
 
-        // 格式化股票代码
         function formatStockCode(code) {
             code = code.replace(/\D/g, '');
             if (code.length === 6) {
@@ -481,7 +496,6 @@
             return code;
         }
 
-        // 筛选评估主函数
         async function filterStock() {
             const input = document.getElementById('stockInput').value.trim();
             const resultDiv = document.getElementById('filterResult');
@@ -505,18 +519,14 @@
                 return;
             }
 
-            // 按钮loading状态
             filterBtn.disabled = true;
             filterBtn.innerText = '数据获取中...';
             resultDiv.innerHTML = '<div class="result-item">正在通过代理池获取实时数据，自动重试中...</div>';
             resultDiv.classList.add('show');
 
             try {
-                // 获取实时数据
                 const fullCode = formatStockCode(stockInfo.code);
                 const targetUrl = `${REAL_TIME_API}${fullCode}`;
-                
-                // 【核心修复】使用代理轮询请求
                 const rawText = await fetchWithProxy(targetUrl);
                 const dataMatch = rawText.match(/v_([a-z0-9]+)="([^"]+)"/);
                 if (!dataMatch) throw new Error('数据格式解析失败，股票代码可能错误');
@@ -533,7 +543,6 @@
 
                 if (!realData.price) throw new Error('无有效价格数据，股票代码可能错误或已退市');
 
-                // 整理股票完整数据
                 const fullStockData = {
                     name: realData.name || stockInfo.name,
                     code: stockInfo.code,
@@ -543,6 +552,7 @@
                     pb: realData.pb || 0,
                     marketCap: realData.marketCap,
                     lastYearDividend: 1.0,
+                    ttmDividend: 1.0,
                     estimatedDividend: 1.0,
                     longTermROE: 15,
                     dividendPayoutRatio: 50,
@@ -552,14 +562,13 @@
                     isNew: true
                 };
                 
-                // 静态保守价计算
+                // 筛选器也同步双口径
                 fullStockData.staticDividend = ((fullStockData.lastYearDividend / fullStockData.price) * 100).toFixed(2);
-                fullStockData.dynamicDividend = ((fullStockData.estimatedDividend / fullStockData.price) * 100).toFixed(2);
+                fullStockData.ttmDividendRate = ((fullStockData.ttmDividend / fullStockData.price) * 100).toFixed(2);
                 fullStockData.staticTargetPrice4 = (fullStockData.lastYearDividend / 0.04).toFixed(2);
                 fullStockData.staticTargetPrice5 = (fullStockData.lastYearDividend / 0.05).toFixed(2);
                 fullStockData.equityReturn = fullStockData.pe ? (1 / fullStockData.pe * 100).toFixed(2) : '--';
                 
-                // 生成评估报告
                 const evaluation = generateEvaluationReport(fullStockData, realData);
                 resultDiv.innerHTML = evaluation;
                 currentEvalStock = fullStockData;
@@ -579,13 +588,11 @@
                     </div>
                 `;
             } finally {
-                // 恢复按钮状态
                 filterBtn.disabled = false;
                 filterBtn.innerText = '合规性评估';
             }
         }
 
-        // 生成合规性评估报告
         function generateEvaluationReport(stock, realData) {
             let passCount = 0;
             let html = `
@@ -593,14 +600,13 @@
                     <h4>📊 ${stock.name} (${stock.code}) 合规性评估报告</h4>
                     <div>最新收盘价：¥${stock.price.toFixed(2)} | PE(TTM)：${stock.pe.toFixed(2)} | PB：${stock.pb.toFixed(2)}</div>
                     <div>总市值：${stock.marketCap}亿 | 股东权益回报率：${stock.equityReturn}%</div>
+                    <div>静态股息率：${stock.staticDividend}% | TTM动态股息率：${stock.ttmDividendRate}%</div>
                     <div>静态4%股息率目标价：¥${stock.staticTargetPrice4} | 静态5%股息率目标价：¥${stock.staticTargetPrice5}</div>
-                    <div>当前静态股息率：${stock.staticDividend}% | 当前动态股息率：${stock.dynamicDividend}%</div>
                 </div>
             `;
             
             html += '<div class="result-item">';
             
-            // 标准1：长期ROE≥15%
             if (stock.longTermROE >= 15) {
                 html += '<div class="standard-item">✅ <strong>标准1 达标</strong>：长期平均ROE '+stock.longTermROE+'% ≥ 15%</div>';
                 passCount++;
@@ -608,7 +614,6 @@
                 html += '<div class="standard-item">❌ <strong>标准1 未达标</strong>：长期平均ROE '+stock.longTermROE+'% < 15%</div>';
             }
             
-            // 标准2：分红率≥50%
             if (stock.dividendPayoutRatio >= 50) {
                 html += '<div class="standard-item">✅ <strong>标准2 达标</strong>：分红率 '+stock.dividendPayoutRatio+'% ≥ 50%</div>';
                 passCount++;
@@ -616,13 +621,9 @@
                 html += '<div class="standard-item">❌ <strong>标准2 未达标</strong>：分红率 '+stock.dividendPayoutRatio+'% < 50%</div>';
             }
             
-            // 标准3：股东权益回报率
             html += `<div class="standard-item">📌 <strong>标准3 股东权益回报率</strong>：${stock.equityReturn}% = 1/PE(${stock.pe.toFixed(2)})</div>`;
-            
-            // 标准4-5
             html += '<div class="standard-item">⚠️ <strong>标准4-5 待确认</strong>：行业前景、国企属性需手动确认</div>';
             
-            // 标准6：PE<20
             if (stock.pe < 20 && stock.pe > 0) {
                 html += '<div class="standard-item">✅ <strong>标准6 达标</strong>：PE(TTM) '+stock.pe.toFixed(2)+' < 20</div>';
                 passCount++;
@@ -630,21 +631,18 @@
                 html += '<div class="standard-item">❌ <strong>标准6 未达标</strong>：PE(TTM) '+stock.pe.toFixed(2)+' ≥ 20 或为负</div>';
             }
             
-            // 标准7：静态股息率≥4%
-            if (parseFloat(stock.staticDividend) >= 4) {
-                html += '<div class="standard-item">✅ <strong>标准7 达标</strong>：静态股息率 '+stock.staticDividend+'% ≥ 4%</div>';
+            if (parseFloat(stock.ttmDividendRate) >= 4) {
+                html += '<div class="standard-item">✅ <strong>标准7 达标</strong>：TTM动态股息率 '+stock.ttmDividendRate+'% ≥ 4%</div>';
                 passCount++;
             } else {
-                html += '<div class="standard-item">❌ <strong>标准7 未达标</strong>：静态股息率 '+stock.staticDividend+'% < 4%</div>';
+                html += '<div class="standard-item">❌ <strong>标准7 未达标</strong>：TTM动态股息率 '+stock.ttmDividendRate+'% < 4%</div>';
             }
             
-            // 标准8：长期回报率
             const longTermReturn = ((stock.longTermROE * (1/(stock.pb || 1))) + parseFloat(stock.staticDividend)).toFixed(2);
             html += `<div class="standard-item">📌 <strong>标准8 长期预期回报率</strong>：${longTermReturn}% = ROE×(1/PB)+静态股息率</div>`;
             
             html += '</div>';
             
-            // 综合评级
             const ratingClass = passCount >= 3 ? 'result-pass' : (passCount >= 2 ? 'result-warn' : 'result-fail');
             const ratingText = passCount >= 3 ? '⭐⭐⭐⭐ 优秀标的' : (passCount >= 2 ? '⭐⭐⭐ 合格标的' : '⭐ 不合格标的');
             
@@ -654,7 +652,6 @@
             return html;
         }
 
-        // 回车触发评估
         document.getElementById('stockInput').addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 filterStock();
