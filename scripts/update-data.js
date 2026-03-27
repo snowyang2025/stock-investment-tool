@@ -2,7 +2,7 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-// ==================== 完整股票池（已补充截图所有股票） ====================
+// ==================== 完整股票池 ====================
 const stockPool = [
   // 核1 核心仓位
   {
@@ -72,7 +72,6 @@ const stockPool = [
     isStateOwned: false,
     positionRule: '单只≤体系1总仓位10%，民企卫星仓≤20%'
   },
-  // 截图新增补充的备1股票
   {
     category: '备1',
     name: '农业银行',
@@ -175,6 +174,7 @@ async function fetchStockData(stock) {
     };
   } catch (error) {
     console.log(`【${stock.name}】数据拉取失败:`, error.message);
+    // 拉取失败时返回基础数据，不中断流程
     return { ...stock, price: 0, pe: 0, pb: 0, error: error.message };
   }
 }
@@ -187,24 +187,32 @@ async function main() {
   for (const stock of stockPool) {
     const data = await fetchStockData(stock);
     result.push(data);
-    // 避免请求过快
+    // 避免请求过快被拦截
     await new Promise(resolve => setTimeout(resolve, 300));
   }
 
+  // 【修复】兼容GitHub Actions路径，确保文件写入正确
+  const dataDir = path.resolve(process.cwd(), 'data');
+  const outputPath = path.join(dataDir, 'stock-data.json');
+  
   // 确保data文件夹存在
-  const dataDir = path.join(__dirname, '../data');
   if (!fs.existsSync(dataDir)) {
+    console.log('data文件夹不存在，已自动创建');
     fs.mkdirSync(dataDir, { recursive: true });
   }
 
   // 写入JSON文件
-  const outputPath = path.join(dataDir, 'stock-data.json');
-  fs.writeFileSync(outputPath, JSON.stringify({
+  const outputData = {
     updateTime: new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }),
     stockList: result
-  }, null, 2));
+  };
+  fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2));
 
   console.log(`数据拉取完成，共${result.length}只股票，已保存到${outputPath}`);
+  console.log('文件写入成功，准备提交到仓库');
 }
 
-main().catch(console.error);
+main().catch(err => {
+  console.error('脚本执行失败:', err);
+  process.exit(1);
+});
