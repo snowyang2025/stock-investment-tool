@@ -1,5 +1,5 @@
 {
-  "updateTime": "2026/4/29 18:52:07",
+  "updateTime": "2026/4/29 20:15:06",
   "stockList": [
     {
       "category": "核1",
@@ -14,11 +14,11 @@
       "positionRule": "单只≤体系1总仓位20%，3只合计60%-70%",
       "price": 26.77,
       "yesterdayClose": 26.73,
-      "pe": 19.17,
-      "pb": 2.96,
+      "pe": 18.15,
+      "pb": 2.87,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:51:48"
+      "updateTime": "2026/4/29 20:14:48"
     },
     {
       "category": "核1",
@@ -37,7 +37,7 @@
       "pb": 2.08,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:51:49"
+      "updateTime": "2026/4/29 20:14:49"
     },
     {
       "category": "核1",
@@ -56,7 +56,7 @@
       "pb": 0.65,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:51:51"
+      "updateTime": "2026/4/29 20:14:50"
     },
     {
       "category": "备1",
@@ -75,7 +75,7 @@
       "pb": 3.96,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:51:53"
+      "updateTime": "2026/4/29 20:14:51"
     },
     {
       "category": "备1",
@@ -94,7 +94,7 @@
       "pb": 2.82,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:51:54"
+      "updateTime": "2026/4/29 20:14:53"
     },
     {
       "category": "备1",
@@ -113,7 +113,7 @@
       "pb": 1.49,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:51:56"
+      "updateTime": "2026/4/29 20:14:54"
     },
     {
       "category": "备1",
@@ -128,11 +128,11 @@
       "positionRule": "单只≤总仓位5%，仅体系1卫星仓配置",
       "price": 6.94,
       "yesterdayClose": 6.98,
-      "pe": 8.35,
-      "pb": 0.88,
+      "pe": 8.25,
+      "pb": 0.86,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:51:58"
+      "updateTime": "2026/4/29 20:14:55"
     },
     {
       "category": "备1",
@@ -151,7 +151,7 @@
       "pb": 0.41,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:51:59"
+      "updateTime": "2026/4/29 20:14:56"
     },
     {
       "category": "备1",
@@ -166,11 +166,11 @@
       "positionRule": "单只≤总仓位5%，仅体系1卫星仓配置",
       "price": 6.79,
       "yesterdayClose": 6.76,
-      "pe": 5.02,
-      "pb": 0.34,
+      "pe": 5.24,
+      "pb": 0.33,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:52:01"
+      "updateTime": "2026/4/29 20:14:58"
     },
     {
       "category": "备1",
@@ -189,7 +189,7 @@
       "pb": 0.66,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:52:02"
+      "updateTime": "2026/4/29 20:15:02"
     },
     {
       "category": "备1",
@@ -208,7 +208,7 @@
       "pb": 1.15,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:52:04"
+      "updateTime": "2026/4/29 20:15:04"
     },
     {
       "category": "备2",
@@ -227,7 +227,7 @@
       "pb": 2.88,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/4/29 18:52:06"
+      "updateTime": "2026/4/29 20:15:05"
     }
   ]
 }
