@@ -1,5 +1,5 @@
 {
-  "updateTime": "2026/5/14 19:48:57",
+  "updateTime": "2026/5/14 22:00:31",
   "stockList": [
     {
       "category": "核1",
@@ -18,7 +18,7 @@
       "pb": 2.89,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:39"
+      "updateTime": "2026/5/14 22:00:16"
     },
     {
       "category": "核1",
@@ -37,7 +37,7 @@
       "pb": 1.96,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:41"
+      "updateTime": "2026/5/14 22:00:17"
     },
     {
       "category": "核1",
@@ -56,7 +56,7 @@
       "pb": 0.65,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:42"
+      "updateTime": "2026/5/14 22:00:18"
     },
     {
       "category": "备1",
@@ -75,7 +75,7 @@
       "pb": 4.11,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:44"
+      "updateTime": "2026/5/14 22:00:20"
     },
     {
       "category": "备1",
@@ -94,7 +94,7 @@
       "pb": 2.95,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:45"
+      "updateTime": "2026/5/14 22:00:21"
     },
     {
       "category": "备1",
@@ -113,7 +113,7 @@
       "pb": 1.48,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:47"
+      "updateTime": "2026/5/14 22:00:22"
     },
     {
       "category": "备1",
@@ -132,7 +132,7 @@
       "pb": 0.85,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:48"
+      "updateTime": "2026/5/14 22:00:23"
     },
     {
       "category": "备1",
@@ -151,7 +151,7 @@
       "pb": 0.41,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:50"
+      "updateTime": "2026/5/14 22:00:25"
     },
     {
       "category": "备1",
@@ -170,7 +170,7 @@
       "pb": 0.33,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:51"
+      "updateTime": "2026/5/14 22:00:26"
     },
     {
       "category": "备1",
@@ -189,7 +189,7 @@
       "pb": 0.68,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:53"
+      "updateTime": "2026/5/14 22:00:28"
     },
     {
       "category": "备1",
@@ -208,7 +208,7 @@
       "pb": 1.15,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:54"
+      "updateTime": "2026/5/14 22:00:29"
     },
     {
       "category": "备2",
@@ -227,7 +227,7 @@
       "pb": 2.7,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/5/14 19:48:56"
+      "updateTime": "2026/5/14 22:00:30"
     }
   ]
 }
