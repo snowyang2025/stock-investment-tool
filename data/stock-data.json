@@ -1,5 +1,5 @@
 {
-  "updateTime": "2026/6/9 14:46:08",
+  "updateTime": "2026/6/9 18:32:24",
   "stockList": [
     {
       "category": "核1",
@@ -12,13 +12,13 @@
       "dividendPayoutRatio": 70,
       "isStateOwned": true,
       "positionRule": "单只≤体系1总仓位20%，3只合计60%-70%",
-      "price": 27.57,
+      "price": 27.63,
       "yesterdayClose": 27.51,
-      "pe": 18.7,
-      "pb": 2.96,
+      "pe": 18.74,
+      "pb": 2.97,
       "marketCap": "0.00",
-      "ma120": null,
-      "updateTime": "2026/6/9 14:45:56"
+      "ma120": 26.922,
+      "updateTime": "2026/6/9 18:32:07"
     },
     {
       "category": "核1",
@@ -31,13 +31,13 @@
       "dividendPayoutRatio": 60,
       "isStateOwned": true,
       "positionRule": "单只≤体系1总仓位20%，3只合计60%-70%",
-      "price": 48.86,
+      "price": 48.98,
       "yesterdayClose": 50.76,
-      "pe": 20.55,
+      "pe": 20.6,
       "pb": 2.12,
       "marketCap": "0.00",
-      "ma120": null,
-      "updateTime": "2026/6/9 14:45:57"
+      "ma120": 44.406,
+      "updateTime": "2026/6/9 18:32:08"
     },
     {
       "category": "核1",
@@ -50,13 +50,13 @@
       "dividendPayoutRatio": 65,
       "isStateOwned": true,
       "positionRule": "单只≤体系1总仓位15%，3只合计60%-70%",
-      "price": 5.11,
+      "price": 5.1,
       "yesterdayClose": 5.08,
-      "pe": 17.77,
-      "pb": 0.62,
+      "pe": 17.73,
+      "pb": 0.61,
       "marketCap": "0.00",
-      "ma120": null,
-      "updateTime": "2026/6/9 14:45:58"
+      "ma120": 5.231,
+      "updateTime": "2026/6/9 18:32:10"
     },
     {
       "category": "备1",
@@ -74,8 +74,8 @@
       "pe": 15.5,
       "pb": 3.87,
       "marketCap": "0.00",
-      "ma120": null,
-      "updateTime": "2026/6/9 14:45:59"
+      "ma120": 58.301,
+      "updateTime": "2026/6/9 18:32:12"
     },
     {
       "category": "备1",
@@ -88,13 +88,13 @@
       "dividendPayoutRatio": 52,
       "isStateOwned": false,
       "positionRule": "单只≤体系1总仓位10%，民企卫星仓≤20%",
-      "price": 25.13,
+      "price": 25.12,
       "yesterdayClose": 25.37,
       "pe": 13.15,
       "pb": 2.95,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/9 14:46:00"
+      "updateTime": "2026/6/9 18:32:13"
     },
     {
       "category": "备1",
@@ -107,13 +107,13 @@
       "dividendPayoutRatio": 60,
       "isStateOwned": false,
       "positionRule": "单只≤体系1总仓位10%，民企卫星仓≤20%",
-      "price": 37.87,
+      "price": 37.88,
       "yesterdayClose": 38.11,
       "pe": 7.27,
       "pb": 1.4,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/9 14:46:01"
+      "updateTime": "2026/6/9 18:32:14"
     },
     {
       "category": "备1",
@@ -126,13 +126,13 @@
       "dividendPayoutRatio": 30,
       "isStateOwned": true,
       "positionRule": "单只≤总仓位5%，仅体系1卫星仓配置",
-      "price": 6.59,
+      "price": 6.6,
       "yesterdayClose": 6.57,
-      "pe": 7.84,
+      "pe": 7.85,
       "pb": 0.83,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/9 14:46:02"
+      "updateTime": "2026/6/9 18:32:16"
     },
     {
       "category": "备1",
@@ -151,7 +151,7 @@
       "pb": 0.39,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/9 14:46:03"
+      "updateTime": "2026/6/9 18:32:17"
     },
     {
       "category": "备1",
@@ -164,13 +164,13 @@
       "dividendPayoutRatio": 15,
       "isStateOwned": true,
       "positionRule": "单只≤总仓位5%，仅体系1卫星仓配置",
-      "price": 6.26,
+      "price": 6.27,
       "yesterdayClose": 6.25,
-      "pe": 4.83,
+      "pe": 4.84,
       "pb": 0.31,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/9 14:46:04"
+      "updateTime": "2026/6/9 18:32:19"
     },
     {
       "category": "备1",
@@ -189,7 +189,7 @@
       "pb": 0.58,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/9 14:46:05"
+      "updateTime": "2026/6/9 18:32:20"
     },
     {
       "category": "备1",
@@ -202,13 +202,13 @@
       "dividendPayoutRatio": 50,
       "isStateOwned": true,
       "positionRule": "单只≤体系1总仓位10%",
-      "price": 5.02,
+      "price": 5,
       "yesterdayClose": 4.93,
-      "pe": 18.4,
-      "pb": 1.17,
+      "pe": 18.32,
+      "pb": 1.16,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/9 14:46:06"
+      "updateTime": "2026/6/9 18:32:22"
     },
     {
       "category": "备2",
@@ -221,13 +221,13 @@
       "dividendPayoutRatio": 50,
       "isStateOwned": false,
       "positionRule": "单只≤总仓位10%，仅卫星仓配置",
-      "price": 78.99,
+      "price": 79.11,
       "yesterdayClose": 79.96,
-      "pe": 24.33,
+      "pe": 24.37,
       "pb": 2.4,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/9 14:46:07"
+      "updateTime": "2026/6/9 18:32:23"
     }
   ]
 }
