@@ -1,9 +1,9 @@
 {
-  "updateTime": "2026/6/10 19:35:47",
+  "updateTime": "2026/6/10 23:24:07",
   "stockList": [
     {
       "category": "核1",
-      "name": "��������",
+      "name": "长江电力",
       "code": "600900",
       "lastYearDividend": 0.815,
       "ttmDividend": 0.815,
@@ -12,13 +12,13 @@
       "dividendPayoutRatio": 70,
       "isStateOwned": true,
       "positionRule": "单只≤体系1总仓位20%，3只合计60%-70%",
-      "price": 27.69,
-      "yesterdayClose": 27.63,
-      "pe": 18.78,
-      "pb": 2.97,
-      "marketCap": "0.00",
-      "ma120": 26.922,
-      "updateTime": "2026/6/10 19:35:29"
+      "price": 0,
+      "pe": 0,
+      "pb": 0,
+      "marketCap": "未知",
+      "error": "",
+      "ma120": null,
+      "updateTime": "2026/6/10 23:23:54"
     },
     {
       "category": "核1",
@@ -36,8 +36,8 @@
       "pe": 19.98,
       "pb": 2.06,
       "marketCap": "0.00",
-      "ma120": 44.462,
-      "updateTime": "2026/6/10 19:35:31"
+      "ma120": null,
+      "updateTime": "2026/6/10 23:23:56"
     },
     {
       "category": "核1",
@@ -55,8 +55,8 @@
       "pe": 17.7,
       "pb": 0.61,
       "marketCap": "0.00",
-      "ma120": 5.228,
-      "updateTime": "2026/6/10 19:35:32"
+      "ma120": null,
+      "updateTime": "2026/6/10 23:23:57"
     },
     {
       "category": "备1",
@@ -74,8 +74,8 @@
       "pe": 15.39,
       "pb": 3.84,
       "marketCap": "0.00",
-      "ma120": 58.224,
-      "updateTime": "2026/6/10 19:35:34"
+      "ma120": null,
+      "updateTime": "2026/6/10 23:23:58"
     },
     {
       "category": "备1",
@@ -94,7 +94,7 @@
       "pb": 3,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/10 19:35:35"
+      "updateTime": "2026/6/10 23:23:59"
     },
     {
       "category": "备1",
@@ -113,7 +113,7 @@
       "pb": 1.41,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/10 19:35:37"
+      "updateTime": "2026/6/10 23:24:00"
     },
     {
       "category": "备1",
@@ -132,7 +132,7 @@
       "pb": 0.84,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/10 19:35:38"
+      "updateTime": "2026/6/10 23:24:01"
     },
     {
       "category": "备1",
@@ -151,7 +151,7 @@
       "pb": 0.39,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/10 19:35:40"
+      "updateTime": "2026/6/10 23:24:02"
     },
     {
       "category": "备1",
@@ -170,7 +170,7 @@
       "pb": 0.31,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/10 19:35:41"
+      "updateTime": "2026/6/10 23:24:04"
     },
     {
       "category": "备1",
@@ -189,7 +189,7 @@
       "pb": 0.57,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/10 19:35:43"
+      "updateTime": "2026/6/10 23:24:05"
     },
     {
       "category": "备1",
@@ -208,7 +208,7 @@
       "pb": 1.17,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/10 19:35:44"
+      "updateTime": "2026/6/10 23:24:06"
     },
     {
       "category": "备2",
@@ -227,7 +227,7 @@
       "pb": 2.4,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/6/10 19:35:46"
+      "updateTime": "2026/6/10 23:24:07"
     }
   ]
 }
