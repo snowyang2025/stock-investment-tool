@@ -1,5 +1,5 @@
 {
-  "updateTime": "2026/8/11 14:59:04",
+  "updateTime": "2026/8/11 16:11:17",
   "stockList": [
     {
       "category": "核1",
@@ -12,13 +12,13 @@
       "dividendPayoutRatio": 70,
       "isStateOwned": true,
       "positionRule": "单只≤体系1总仓位20%，3只合计60%-70%",
-      "price": 28.28,
+      "price": 28.31,
       "yesterdayClose": 28.05,
-      "pe": 19.18,
+      "pe": 19.2,
       "pb": 3.32,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/8/11 14:58:43"
+      "updateTime": "2026/8/11 16:11:05"
     },
     {
       "category": "核1",
@@ -31,13 +31,13 @@
       "dividendPayoutRatio": 60,
       "isStateOwned": true,
       "positionRule": "单只≤体系1总仓位20%，3只合计60%-70%",
-      "price": 44.82,
+      "price": 44.7,
       "yesterdayClose": 44.68,
-      "pe": 18.85,
+      "pe": 18.8,
       "pb": 2.03,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/8/11 14:58:46"
+      "updateTime": "2026/8/11 16:11:06"
     },
     {
       "category": "核1",
@@ -56,7 +56,7 @@
       "pb": 0.58,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/8/11 14:58:47"
+      "updateTime": "2026/8/11 16:11:07"
     },
     {
       "category": "备1",
@@ -69,13 +69,13 @@
       "dividendPayoutRatio": 55,
       "isStateOwned": false,
       "positionRule": "单只≤体系1总仓位10%，民企卫星仓≤20%",
-      "price": 55.75,
+      "price": 55.79,
       "yesterdayClose": 56.59,
-      "pe": 16.18,
+      "pe": 16.19,
       "pb": 4.04,
       "marketCap": "0.00",
-      "ma120": 55.475,
-      "updateTime": "2026/8/11 14:58:50"
+      "ma120": null,
+      "updateTime": "2026/8/11 16:11:08"
     },
     {
       "category": "备1",
@@ -88,13 +88,13 @@
       "dividendPayoutRatio": 52,
       "isStateOwned": false,
       "positionRule": "单只≤体系1总仓位10%，民企卫星仓≤20%",
-      "price": 26.09,
+      "price": 26.1,
       "yesterdayClose": 26.26,
-      "pe": 13.65,
+      "pe": 13.66,
       "pb": 3.06,
       "marketCap": "0.00",
-      "ma120": 25.571,
-      "updateTime": "2026/8/11 14:58:52"
+      "ma120": null,
+      "updateTime": "2026/8/11 16:11:09"
     },
     {
       "category": "备1",
@@ -112,8 +112,8 @@
       "pe": 7.78,
       "pb": 1.49,
       "marketCap": "0.00",
-      "ma120": 38.621,
-      "updateTime": "2026/8/11 14:58:53"
+      "ma120": null,
+      "updateTime": "2026/8/11 16:11:10"
     },
     {
       "category": "备1",
@@ -126,13 +126,13 @@
       "dividendPayoutRatio": 30,
       "isStateOwned": true,
       "positionRule": "单只≤总仓位5%，仅体系1卫星仓配置",
-      "price": 6.47,
+      "price": 6.48,
       "yesterdayClose": 6.46,
-      "pe": 7.69,
-      "pb": 0.81,
+      "pe": 7.71,
+      "pb": 0.82,
       "marketCap": "0.00",
-      "ma120": 6.529,
-      "updateTime": "2026/8/11 14:58:55"
+      "ma120": null,
+      "updateTime": "2026/8/11 16:11:11"
     },
     {
       "category": "备1",
@@ -150,8 +150,8 @@
       "pe": 4.92,
       "pb": 0.39,
       "marketCap": "0.00",
-      "ma120": 4.584,
-      "updateTime": "2026/8/11 14:58:56"
+      "ma120": null,
+      "updateTime": "2026/8/11 16:11:12"
     },
     {
       "category": "备1",
@@ -170,7 +170,7 @@
       "pb": 0.3,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/8/11 14:58:57"
+      "updateTime": "2026/8/11 16:11:13"
     },
     {
       "category": "备1",
@@ -189,7 +189,7 @@
       "pb": 0.57,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/8/11 14:58:59"
+      "updateTime": "2026/8/11 16:11:14"
     },
     {
       "category": "备1",
@@ -202,13 +202,13 @@
       "dividendPayoutRatio": 50,
       "isStateOwned": true,
       "positionRule": "单只≤体系1总仓位10%",
-      "price": 5.05,
+      "price": 5.04,
       "yesterdayClose": 5,
-      "pe": 18.51,
+      "pe": 18.47,
       "pb": 1.2,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/8/11 14:59:01"
+      "updateTime": "2026/8/11 16:11:15"
     },
     {
       "category": "备2",
@@ -227,7 +227,7 @@
       "pb": 2.47,
       "marketCap": "0.00",
       "ma120": null,
-      "updateTime": "2026/8/11 14:59:04"
+      "updateTime": "2026/8/11 16:11:16"
     }
   ]
 }
